@@ -60,10 +60,9 @@ function addCarToCard(id, carCount) {
 }
 
 
-function deleteCarFromCard(id) {
-    let cardAfter = card.slice(id - 1);
-    console.log(cardAfter);
-    return cardAfter;
+function deleteCarFromCard(card,id) {
+    card.splice(id - 1, 1);
+    return card;
 }
 
 
@@ -74,21 +73,27 @@ function totalAmount(card) {
         }
     return amount;
     }
-  
+
 
 
 function totalSumm(card) {
-    let sum = 0
+    let sum = 0;
     for (const itemInCard of card) {
         sum += itemInCard.car.price;
     }
-    return sum;  
+    return sum;
 }
 
 
-function total() {
-    console.log('Общее количество товаров в корзине: ' + totalAmount(card), '\n',
-    'Общая стоимость товаров в корзине: ' + totalSumm(card));
+function total(card) {
+    let sum = 0;
+    let amount = 0;
+    for (const itemInCard of card) {
+        sum += itemInCard.car.price;
+        amount += itemInCard.count;
+    }
+    const result = {totalItems: amount, totalPrice: sum};
+    return result
 }
 
 
@@ -98,9 +103,9 @@ function clearCard(card) {
 }
 
 
-total()
+total(card)
 totalSumm(card)
 clearCard(card)
-deleteCarFromCard(2)
+deleteCarFromCard(card, 2)
 totalAmount(card)
 addCarToCard(1,1)
