@@ -1,20 +1,14 @@
-let nodePath = process.argv[0];
-let appPath = process.argv[1];
-let  amountOfElem = process.argv[2];
-let numbers = [5, 2, -6, 56, 22, 245, 8, 25, 17, 7]
-
-
-function primeNumbers(array) {
-    let count = 0
-    for (let i = 0; i < amountOfElem; i++) {
-        const element = array[i];
-        if (element % 2 !== 0)
-            {continue;}
-        else
-            {count ++;}
+function getPrimeNums(n) {
+    const array = [];
+    let counter = 1;
+    while (array.length < n) {
+        counter++;
+        if (counter  % 2 !== 0 && counter % 3 !== 0 && counter % 5 !==0 || counter / 5 === 1  counter / 3 === 1  counter / 2 === 1) {
+            array.push(counter);
+        }
     }
-    return count;
+    return array;
 }
 
 
-primeNumbers(numbers);
+console.log(getPrimeNums(process.argv[2]));
